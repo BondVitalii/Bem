@@ -12,6 +12,7 @@ p {
 }
 
 ul {
+  /* По бему этого делать нельзя (мы не можем стилизировать теги) в идеале. */
   padding: 0;
   margin: 0;
   list-style: none;
@@ -31,3 +32,179 @@ body {
   background-color: #fff;
 }
 /* ___________________________________________________ */
+
+/* Вложенность (элементы в блоки, и имена классов блоков и элементов)*/
+
+/* ----- код html ----- */
+/* <ul class="site-nav list">
+      <li class="site-nav__item">
+        <a class="site-nav__link" href="">
+          <span class="site-nav__icon">Иконка</span>
+          <span class="site-nav__text">О нас</span>
+        </a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link" href="">
+          <span class="site-nav__icon">Иконка</span>
+          <span class="site-nav__text">Портфолио</span>
+        </a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link" href="">
+          <span class="site-nav__icon">Иконка</span>
+          <span class="site-nav__text">Контакты</span>
+        </a>
+      </li>
+    </ul> */
+/* ----------------------------------- */
+
+/* ----- Сброс стилей ----- */
+
+/* Сбрасываем стили у списков. Создаем блок утилиту, которую потом будем добавлять к спискам. */
+.list {
+  /* Это блок утилита */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* ----- Site nav ----- */
+
+/* Имя-класса блока site-nav*/
+.site-nav {
+  display: flex;
+}
+
+/* Имена-классов элементов этого блока (к имени класса блока добавляем два нижних подчеркивания и имя класс элемента site-nav__item) */
+.site-nav__item {
+  margin-right: 20px; /* добавляем крайнюю геометрию элементам списка */
+}
+.site-nav__item:last-child {
+  margin-right: 0; /* убираем крайнюю геометрию у последнего элемента списка */
+}
+
+.site-nav__link {
+  display: block; /* задаем ссылкам display: block; чтоб вертикальная геометрия подтянулась. Или можно задать display: flex; */
+  padding: 10px 20px;
+  text-decoration: none;
+  color: currentColor; /* color: currentColor; - это возьмет цвет от родителя (унаследует). */
+}
+.site-nav__link--active {
+  /* .site-nav__link--active Это модификатор (активное состояние - текущая страница). К имени элемента бобавляем два обычных подчеркивания и пишем название модификатора (состояние).  */
+  color: teal;
+}
+/* :hover делаем элементу (ссылке) состояние ховер. К имени-класса элемента просто добавляем ховер. */
+.site-nav__link:hover {
+  color: orangered;
+}
+
+.site-nav__icon {
+  display: inline-block; /* задаем иконкам display: inline-block; чтоб вертикальная геометрия подтянулась. */
+  padding: 5px;
+  background-color: teal;
+  color: #fff;
+}
+.site-nav__text {
+}
+
+/* ------------------------------------------------------------------------------------- */
+/* ----- Logo ----- */
+
+/* ----- код html ----- */
+/* <a class="logo" href="">
+      <img
+        class="logo__image"
+        src="./images/logo.png"
+        alt="Логотип компании Технокряк"
+      />
+      <span class="logo__text">Технокряк</span>
+    </a> */
+/* ----------------------------------- */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.logo__image {
+  margin-right: 4px;
+}
+.logo__text {
+  text-transform: uppercase;
+  color: #2a2a2a;
+}
+/* .logo__text--invers Делаем текст лого светлым (вариант №1). 
+Создаем селектор .logo__text--invers и добовляем его в класс в (footer) <span class="logo__text logo__text--invers">Технокряк</span> к лого__текст, тем самым меняем уму стили. */
+
+/* .logo__text--invers {
+  color: #fff;
+} */
+/* _______________________________________________________________________________________ */
+
+/* Как делать марджины болокам правильно. 
+- В нашем случае марджины мы делаем как обычно , на имя блока, на имя элемента не следуя БЭМ методологии. 
+- В случае марджинов по БЭМ методологии, пример ниже (как сделать идеально).  */
+
+/* ----- Набор карточек Card-set ----- */
+
+/* ----- код html ----- */
+/* <ul class="card-set">
+      <li class="card-set__item">
+        <article class="card-set__product">
+          <img
+            class="card-set__image"
+            src="https://picsum.photos/300/200"
+            alt=""
+          />
+          <div class="card-set__meta">
+            <h3 class="card-set__name">Название продукта</h3>
+            <p class="card-set__price">193 кредита</p>
+            <button class="card-set__button">В корзину</button>
+          </div>
+        </article>
+      </li>
+
+      <li class="card-set__item">
+        <article class="card-set__product">
+          <img
+            class="card-set__image"
+            src="https://picsum.photos/300/200"
+            alt=""
+          />
+          <div class="card-set__meta">
+            <h3 class="card-set__name">Название продукта</h3>
+            <p class="card-set__price">193 кредита</p>
+            <button class="card-set__button">В корзину</button>
+          </div>
+        </article>
+      </li>
+    </ul> */
+/* ----------------------------------- */
+/* ----- Card-set ----- */
+.card-set {
+  display: flex;
+  flex-wrap: wrap; /* Свойство flex-wrap позвоялет превратить однострочный контейнер в многострочный. Элементы будут добавляться в строку до тех пор, пока в ней будет место, после чего будет автоматически создана еще одна строка. */
+  margin: -15px;
+}
+.card-set__item {
+  width: 300px; /* или может быть flex-basis: ; */
+  margin: 15px;
+}
+/* ----- Product ----- */
+.product {
+}
+.product__image {
+}
+.product__meta {
+}
+.product__name {
+}
+.product__price {
+}
+.product__button {
+}
+
+/* ----- Page footer ----- */
+.page-footer {
+  background-color: #2a2a2a;
+}
