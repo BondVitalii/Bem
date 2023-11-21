@@ -47,35 +47,37 @@
       ------->
 
     <header class="page-header">
-      <a class="logo" href="">
-        <img
-          class="logo__image"
-          src="./images/logo.png"
-          alt="Логотип компании Технокряк"
-        />
-        <span class="logo__text">Технокряк</span>
-      </a>
+      <nav class="page-header__nav">
+        <a class="logo page-header__logo" href="">
+          <img
+            class="logo__image"
+            src="./images/logo.png"
+            alt="Логотип компании Технокряк"
+          />
+          Технокряк
+        </a>
 
-      <ul class="site-nav list">
-        <li class="site-nav__item">
-          <a class="site-nav__link site-nav__link--active" href="">
-            <span class="site-nav__icon">Иконка</span>
-            <span class="site-nav__text">О нас</span>
-          </a>
-        </li>
-        <li class="site-nav__item">
-          <a class="site-nav__link" href="">
-            <span class="site-nav__icon">Иконка</span>
-            <span class="site-nav__text">Портфолио</span>
-          </a>
-        </li>
-        <li class="site-nav__item">
-          <a class="site-nav__link" href="">
-            <span class="site-nav__icon">Иконка</span>
-            <span class="site-nav__text">Контакты</span>
-          </a>
-        </li>
-      </ul>
+        <ul class="site-nav list">
+          <li class="site-nav__item">
+            <a class="site-nav__link site-nav__link--active" href="">
+              <span class="site-nav__icon">Иконка</span>
+              <span class="site-nav__text">О нас</span>
+            </a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="">
+              <span class="site-nav__icon">Иконка</span>
+              <span class="site-nav__text">Портфолио</span>
+            </a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="">
+              <span class="site-nav__icon">Иконка</span>
+              <span class="site-nav__text">Контакты</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <!-- ----- Набор карточек Card-set ----- -->
@@ -130,25 +132,94 @@
       </li>
     </ul>
 
-    <p class="">Пополнение счета выполнено</p>
-    <p class="">Внимание, будут изменены тарифы</p>
-    <p class="">Ошибка проведения транзакции</p>
+    <p class="notification notification--success">
+      Пополнение счета выполнено
+      <span class="notification__icon notification__icon--append">👨‍🚀</span>
+    </p>
+
+    <p class="notification notification--warning">
+      Внимание, будут изменены тарифы
+    </p>
+
+    <p class="notification notification--error">
+      <span class="notification__icon notification__icon--prepend">🚀</span>
+      Ошибка проведения транзакции
+    </p>
 
     <button class="button">
       <span class="button__icon">Иконка</span>
       <span class="button__label">Текст кнопки</span>
     </button>
 
+    <!-- Меняем цвет текста лого в футере на светлый.
+
+      ---------------
+      (Вариант-1 "Модификатор")
+      Добовляем в футере к классу (logo который и в хедере и в футере еще один класс logo--invers) и на нем в CSS меняем цвет. 
+
+      Пример (Вариант-1)
+
+      <header class="page-header">
+        <a class="logo" href="">
+          <img
+            class="logo__image"
+            src="./images/logo.png"
+            alt="Логотип компании Технокряк"
+          />
+          Технокряк
+        </a>
+      </header>
+
+      <footer class="page-footer">
+        <a class="logo logo--invers" href="">
+          <img
+            class="logo__image"
+            src="./images/logo.png"
+            alt="Логотип компании Технокряк"
+          />
+          Технокряк
+        </a>
+      </footer>
+
+      ---------------
+
+      (Вариант-2 "Примесь")
+      Это когда какой-то блок в определенном месте становится элементом другого блока. 
+      Пример: блок/класс logo и к нему добавляем примешиваем page-footer__logo - это "Примесь".
+
+      Пример (Вариант-2 "Примесь")
+
+      <header class="page-header">
+        <a class="logo" href="">
+          <img
+            class="logo__image"
+            src="./images/logo.png"
+            alt="Логотип компании Технокряк"
+          />
+          Технокряк
+        </a>
+      </header>
+
+      <footer class="page-footer">
+        <a class="logo page-footer__logo" href="">
+          <img
+            class="logo__image"
+            src="./images/logo.png"
+            alt="Логотип компании Технокряк"
+          />
+          Технокряк
+        </a>
+      </footer>
+     -->
+
     <footer class="page-footer">
-      <a class="logo" href="">
+      <a class="logo page-footer__logo" href="">
         <img
           class="logo__image"
           src="./images/logo.png"
           alt="Логотип компании Технокряк"
         />
-        <!-- вариант 1 -->
-        <!-- <span class="logo__text logo__text--invers">Технокряк</span> -->
-        <span class="logo__text logo__text--invers">Технокряк</span>
+        Технокряк
       </a>
     </footer>
   </body>
